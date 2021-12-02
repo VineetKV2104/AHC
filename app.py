@@ -154,9 +154,9 @@ def appointment():
             db.session.add(add_appointment)
             db.session.commit()
 
-            # msg = Message('Aadhya Online Consultancy', sender = 'no-reply@aadhyahomoeoclinic.com', recipients = ['info@aadhyahomoeoclinic.com',str(email)])
-            # msg.body = "Name: "+ name + "\nEmail: "+ email +"\nPhone Number: "+mobno+"\nConsulting For: "+problem
-            # mail.send(msg)
+            msg = Message('Aadhya Online Consultancy', sender = 'no-reply@aadhyahomoeoclinic.com', recipients = ['info@aadhyahomoeoclinic.com',str(email)])
+            msg.body = "Name: "+ name + "\nEmail: "+ email +"\nPhone Number: "+mobno+"\nConsulting For: "+problem
+            mail.send(msg)
             return render_template('appointment.html',success_message=1)
         return render_template('appointment.html',success_message=0)
     except Exception as e:
