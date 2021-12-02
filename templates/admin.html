@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="static/Images/KapsicumLogo.png" type="image/png" />
+    <!--plugins-->
+    <link
+      href="static/one/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css"
+      rel="stylesheet"
+    />
+    <link
+      href="static/one/assets/plugins/simplebar/css/simplebar.css"
+      rel="stylesheet"
+    />
+    <link
+      href="static/one/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css"
+      rel="stylesheet"
+    />
+    <link
+      href="static/one/assets/plugins/metismenu/css/metisMenu.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link href="static/one/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="static/one/assets/css/bootstrap-extended.css"
+      rel="stylesheet"
+    />
+    <link href="static/one/assets/css/style.css" rel="stylesheet" />
+    <link href="static/one/assets/css/icons.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+
+    <!-- loader-->
+    <link href="static/one/assets/css/pace.min.css" rel="stylesheet" />
+
+    <!--Theme Styles-->
+    <link href="static/one/assets/css/dark-theme.css" rel="stylesheet" />
+    <link href="static/one/assets/css/light-theme.css" rel="stylesheet" />
+    <link href="static/one/assets/css/semi-dark.css" rel="stylesheet" />
+    <link href="static/one/assets/css/header-colors.css" rel="stylesheet" />
+
+    <title>Admin Panel</title>
+  </head>
+
+  <body>
+    <!--start wrapper-->
+    <div class="wrapper">
+      <!--start top header-->
+      <header class="top-header">
+        <nav class="navbar navbar-expand gap-3">
+          <div class="mobile-toggle-icon fs-3">
+            <i class="bi bi-list"></i>
+          </div>
+
+          <div class="top-navbar-right ms-auto">
+            <ul class="navbar-nav align-items-center">
+              <li class="nav-item search-toggle-icon">
+                <a class="nav-link" href="#">
+                  <div class="">
+                    <i class="bi bi-search"></i>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item dropdown dropdown-user-setting">
+                <a class="dropdown-item" href="/logout">
+                  <div class="d-flex align-items-center">
+                    <div class=""><i class="bi bi-lock-fill"></i></div>
+                    <div class="ms-3"><span>Logout</span></div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!--end top header-->
+
+      <!--start sidebar -->
+      <aside class="sidebar-wrapper" data-simplebar="true">
+        <div class="sidebar-header">
+          <div>
+            <img
+              src="static/KapsicumLogo.png"
+              class="logo-icon"
+              alt="logo icon"
+            />
+          </div>
+          <div></div>
+          <div class="toggle-icon ms-auto"><i class="bi bi-list"></i></div>
+        </div>
+        <!--navigation-->
+        <ul class="metismenu" id="menu">
+          <li>
+            <a href="/admin">
+              <!-- <div class="parent-icon">
+                <i class="bi bi-collection-play-fill"></i>
+              </div> -->
+              <div class="menu-title">Appointments</div>
+            </a>
+          </li>
+        </ul>
+        <!--end navigation-->
+      </aside>
+      <!--end sidebar -->
+
+      <!--start content-->
+      <main class="page-content">
+        <div class="table-responsive mt-3">
+          <table class="table align-middle">
+            <thead class="table-secondary">
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone #</th>
+                <th>Consulting For</th>
+                <th>Fee Status</th>
+                <th>Paid / Unpaid</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for appointment in appointments %}
+              <tr>
+                <td>{{loop.index}}</td>
+                <td>{{appointment.name}}</td>
+                <td>{{appointment.email}}</td>
+                <td>{{appointment.number}}</td>
+                <td style="justify-content: center; padding-left: 3em">
+                  <a
+                    href="javascript:;"
+                    class="text-primary"
+                    data-bs-toggle="modal"
+                    data-bs-placement="bottom"
+                    data-bs-target="#modal{{appointment['id']}}"
+                    title="View Image"
+                    ><i class="bi bi-eye-fill"></i
+                  ></a>
+
+                  <div
+                    class="modal fade"
+                    id="modal{{appointment['id']}}"
+                    tabindex="-1"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-body">
+                          <span>{{appointment.problem}}</span>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  {% if appointment.paid == 0 %}
+                  <span style="color: red">Unpaid</span>
+                  {% else %}
+                  <span style="color: green">Paid</span>
+                  {% endif %}
+                </td>
+                <td>
+                  <div
+                    class="table-actions d-flex align-items-center gap-3 fs-6"
+                  >
+                    <a
+                      href="/paid?id={{appointment.id}}"
+                      class="text-success"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title="Mark Paid"
+                      ><i data-feather="check-square"></i
+                    ></a>
+                    <a
+                      href="/unpaid?id={{appointment.id}}"
+                      class="text-danger"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title="Mark Unpaid"
+                      ><i data-feather="x-square"></i
+                    ></a>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </main>
+      <!--end page main-->
+
+      <!--start overlay-->
+
+      <!--end overlay-->
+
+      <!--Start Back To Top Button-->
+      <a href="javaScript:;" class="back-to-top"
+        ><i class="bx bxs-up-arrow-alt"></i
+      ></a>
+      <!--End Back To Top Button-->
+
+      <!--end switcher-->
+    </div>
+    <!--end wrapper-->
+
+    <!-- Bootstrap bundle JS -->
+    <script src="static/one/assets/js/bootstrap.bundle.min.js"></script>
+    <!--plugins-->
+    <script src="static/one/assets/js/jquery.min.js"></script>
+    <script src="static/one/assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="static/one/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+    <script src="static/one/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="static/one/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="static/one/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="static/one/assets/js/pace.min.js"></script>
+    <script src="static/one/assets/plugins/chartjs/js/Chart.min.js"></script>
+    <script src="static/one/assets/plugins/chartjs/js/Chart.extension.js"></script>
+    <script src="static/one/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <!--app-->
+    <script src="static/one/assets/js/app.js"></script>
+    <script src="static/one/assets/js/index.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="static/one/assets/js/icons-feather-icons.js"></script>
+    <script>
+      new PerfectScrollbar(".best-product");
+    </script>
+  </body>
+</html>

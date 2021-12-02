@@ -1,118 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="static/Images/KapsicumLogo.png" type="image/png" />
+    <!-- Bootstrap CSS -->
+    <link href="static/one/assets//css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="static/one/assets//css/bootstrap-extended.css"
+      rel="stylesheet"
+    />
+    <link href="static/one/assets//css/style.css" rel="stylesheet" />
+    <link href="static/one/assets//css/icons.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
 
-	<title>Caremed - Signin</title>
+    <!-- loader-->
+    <link href="static/one/assets//css/pace.min.css" rel="stylesheet" />
 
-	<meta name="keywords" content="Caremed HTML5 Responsive Template Medicine COVID-19 Corona Hospital" />
-	<meta name="description" content="Caremed - Hospital HTML5 Responsive Template">
-		
-	<!-- Favicon -->
-	<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-	
-	
-	<!-- Plugins CSS File -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/plugins/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/datepicker.min.css">
+    <title>Admin Panel</title>
+  </head>
 
-	<!-- Main CSS File -->
-	<link rel="stylesheet" href="assets/css/style.min.css">
-	<link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
-	
-</head>
-<body>
-    <!------------------------------------------------
-	loading overlay - start
-	------------------------------------------------>
-	<div class="loading-overlay">
-		<div class="bounce-loader">
-			<div class="bounce1"></div>
-			<div class="bounce2"></div>
-			<div class="bounce3"></div>
-		</div>
-	</div>
-	<!------------------------------------------------
-	loading overlay - end
-	------------------------------------------------>
-    <div class="page-wrapper">
-        <!------------------------------------------------
-	    navigation - start
-	    ------------------------------------------------>
-        <header class="header header-sign">
-            <div class="header-middle header-middle-simple">
-                <div class="header-left">
-                    <a href="index.html" class="logo">
-                        <h1 class="mb-0"><img src="assets/images/logo.png" alt="Caremed Logo" width="185" height="48"></h1>
-                    </a>
+  <body>
+    <!--start wrapper-->
+    <div class="wrapper">
+      <!--start content-->
+      <main class="authentication-content">
+        <div class="container-fluid">
+          <div class="authentication-card">
+            <div class="card shadow rounded-0 overflow-hidden">
+              <div class="row g-0">
+                <div
+                  class="
+                    col-lg-6
+                    d-flex
+                    align-items-center
+                    justify-content-center
+                  "
+                  style="background-color: black"
+                >
+                  <img
+                    src="static/KapsicumLogo.png"
+                    class="img-fluid"
+                    alt=""
+                    width="100px"
+                    height="100px"
+                  />
                 </div>
-            </div>
-        </header>
-        <!------------------------------------------------
-	    navigation - end
-	    ------------------------------------------------>
-        <main class="main">
-            <!------------------------------------------------
-	        login - start
-	        ------------------------------------------------>
-            <!-- 
-                background image is added through css and can be modified in the _sections.scss file
-                the image is added to the .bg-section-17 class.
-            -->
-            <div class="height-100vh login-section position-relative bg-section bg-section-17">
-                <form class="sign-form">
-                    <div class="form-heading text-center">
-                        <h4 class="sub-title ls-n-20 line-height-1 mb-2">Sign In.</h4>
-                        <span class="heading-desc">
-                            Sign in to your account below.
-                        </span>
-                    </div>
-                    <div class="form-content">
-                        <div class="input-group input-light">
-                            <h6 class="input-title">Email</h6>
-                            <input type="email" class="form-control" placeholder="example@gmail.com" required>
-                        </div>
-                        <div class="input-group input-light">
-                            <h6 class="input-title">Password</h6>
-                            <input type="password" class="form-control" required>
-                        </div>
-                        <div class="btn-link">
-                            <a href="login.html#">Forgot password?</a>
-                        </div>
-                        <button type="submit" class="btn btn-form btn-secondary-color">
-                            <span>Continue</span>
-                        </button>
-                        <div class="term-privacy d-flex justify-content-center">
-                            <span class="line-height-1">New to MedCare? </span>
-                            <div class="btn-link">
-                                <a class="line-height-1" href="signup.html">Create Profile</a>
+                <div class="col-lg-6">
+                  <div class="card-body p-4 p-sm-5">
+                    <h5 class="card-title">Sign In</h5>
+                    <br />
+                    <form class="form-body" method="post">
+                      <div class="row g-3">
+                        <div class="col-12">
+                          <label for="inputEmailAddress" class="form-label"
+                            >Username</label
+                          >
+                          <div class="ms-auto position-relative">
+                            <div
+                              class="
+                                position-absolute
+                                top-50
+                                translate-middle-y
+                                search-icon
+                                px-3
+                              "
+                            >
+                              <!-- <i data-feather="user"></i> -->
                             </div>
+                            <input
+                              type="text"
+                              class="form-control radius-30 ps-5"
+                              id="inputEmailAddress"
+                              placeholder="Enter Username"
+                              name="uname"
+                            />
+                          </div>
                         </div>
-                    </div>
-                </form>
-                <div class="foreground-img">
-					<img src="assets/images/backgrounds/background-1-fore.png" alt="image">					
-				</div>
-            </div>
-            <!------------------------------------------------
-	        login - end
-	        ------------------------------------------------>
-        </main>
-    </div>
-        <!-- Plugins JS File -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/jquery.waypoints.min.js"></script>
-        <script src="assets/js/plugins/owl.carousel.min.js"></script>
-        <script src="assets/js/plugins/datepicker.min.js"></script>
-        <script src="assets/js/plugins/imagesloaded.pkgd.min.js"></script>
-        <script src="assets/js/plugins/isotope.pkgd.min.js"></script>
+                        <div class="col-12">
+                          <label for="inputChoosePassword" class="form-label"
+                            >Password</label
+                          >
+                          <div class="ms-auto position-relative">
+                            <div
+                              class="
+                                position-absolute
+                                top-50
+                                translate-middle-y
+                                search-icon
+                                px-3
+                              "
+                            >
+                              <!-- <i class="bi bi-lock-fill"></i> -->
+                            </div>
+                            <input
+                              type="password"
+                              class="form-control radius-30 ps-5"
+                              id="inputChoosePassword"
+                              placeholder="Enter Password"
+                              name="pass"
+                            />
+                          </div>
+                        </div>
 
-        
-        <!-- Main JS File -->
-        <script src="assets/js/main.min.js"></script>
-    
-</body>
+                        <!-- <div class="col-6 text-end">
+                          <a href="authentication-forgot-password.html"
+                            >Forgot Password ?</a
+                          >
+                        </div> -->
+                        <div class="col-12">
+                          <div class="d-grid">
+                            <button
+                              type="submit"
+                              class="btn btn-dark radius-30"
+                            >
+                              Sign In
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!--end page main-->
+    </div>
+    <!--end wrapper-->
+
+    <!--plugins-->
+    <script src="static/one/assets//js/jquery.min.js"></script>
+    <script src="static/one/assets//js/pace.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="static/one/assets//js/icons-feather-icons.js"></script>
+  </body>
 </html>
