@@ -6,7 +6,7 @@ from flask_mail import Mail, Message
 app = Flask(__name__)
 mail=Mail(app)
 app.config['MAIL_SERVER']='mail.aadhyahomoeoclinic.com'
-app.config['MAIL_PORT'] = 587
+app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'no-reply@aadhyahomoeoclinic.com'
 app.config['MAIL_PASSWORD'] = 'Pi9Mh9srfh.a'
 app.config['MAIL_USE_TLS'] = False
@@ -55,7 +55,7 @@ def appointment():
             mobno = request.form['mobno']
             problem = request.form['treatment_name']
             
-            msg = Message('Aadhya Online Consultancy', sender = 'no-reply@aadhyahomoeoclinic.com', recipients = ['info@aadhyahomoeoclinic.com',email])
+            msg = Message('Aadhya Online Consultancy', sender = 'no-reply@aadhyahomoeoclinic.com', recipients = ['info@aadhyahomoeoclinic.com',str(email)])
             msg.body = "Name: "+ name + "\nEmail: "+ email +"\nPhone Number: "+mobno+"\nConsulting For: "+problem
             mail.send(msg)
         return render_template('appointment.html')
